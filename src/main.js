@@ -7,12 +7,16 @@ import initTestKnockoutComponent from './Components/TestKnockoutComponent';
 
 import initTestViewModel         from './ViewModels/TestViewModel';
 
-const main = () => {
-  map(initDesktopMenu, $('.desktop-menu'))
-  map(initMobileMenu,  $('.mobile-menu'))
+import WikipediaService          from './Services/WikipediaService';
 
-  map(initTestViewModel, $('#test-view-model'))
-  initTestKnockoutComponent()
+const main = () => {
+  const wikipedia = new WikipediaService();
+
+  map(initDesktopMenu(window)(wikipedia), $('.desktop-menu'))
+  map(initMobileMenu(window),             $('.mobile-menu'))
+
+  map(initTestViewModel(window), $('#test-view-model'))
+  initTestKnockoutComponent(window)
 }
 
 // Side Effects

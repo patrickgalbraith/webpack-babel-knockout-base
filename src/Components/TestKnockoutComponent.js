@@ -7,7 +7,7 @@ class ViewModel {
   }
 }
 
-export default function() {
+export default (window) => {
   ko.components.register('test-knockout-component', {
     viewModel: ViewModel,
     template
